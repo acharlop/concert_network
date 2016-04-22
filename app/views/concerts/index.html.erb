@@ -10,3 +10,13 @@
 	</div>
 	<hr>
 <% end %>
+
+<aside>
+	<ul>
+	<% @this_year.each do |concert| %>
+		<li>
+		<%= link_to concert.artist << " on " << concert.date.strftime("%b %-d"), concert_path(concert) %>
+		</li>
+	<% end %>
+	</ul>
+</aside>

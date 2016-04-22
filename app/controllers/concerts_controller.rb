@@ -1,6 +1,7 @@
 class ConcertsController < ApplicationController
 	def index
-		@concerts = Concert.order(date: :asc)
+		@concerts = Concert.in_month.asc
+		@this_year = Concert.in_year.asc
 	end
 
 	def new
@@ -10,7 +11,7 @@ class ConcertsController < ApplicationController
 	def create
 		@concert = Concert.new(concert_params)
 		if @concert.save
-			redirect_to concert_path
+			redirect_to concert_path(@concert)
 		else
 			flash[:alert] = "ERROR Creating concert"
 			render "new"
