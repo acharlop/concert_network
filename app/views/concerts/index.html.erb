@@ -1,12 +1,11 @@
 <% @concerts.each do |concert| %>
 	<div>
-		<h2><%= concert.artist %></h2>
-		<h3>Playing at: <%= concert.venue %> in <%= concert.city %></h3>
-		<h3>On: <%= concert.date %></h3>
-		<p><%= concert.description %></p>
+		<h2><%= concert.artist %> 
+		On: <%= concert.date %></h2>
 		<p>
 		<strong>Price: <%= number_to_currency(concert.price) %></strong>
-		<%= link_to "Purchase Ticket", concerts_path %>
+		<%= link_to "Purchase Ticket", concerts_path %><br>
+		<%= link_to "More Details", concert_path(concert) %>
 		</p>
 	</div>
 	<hr>
