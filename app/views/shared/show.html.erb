@@ -1,0 +1,44 @@
+<div>
+	<h2><%= @concert.artist %></h2>
+	<h3>Playing at: <%= @concert.venue %> in <%= @concert.city %><br>
+	On: <%= @concert.date %><br>
+	People attending: 
+	<%= @concert.tickets ? @concert.tickets : 0 %></h3>
+	<p><%= @concert.description %></p>
+	<p>
+		<strong>Price: <%= number_to_currency(@concert.price) %></strong>
+		<%= link_to "Purchase Ticket", concert_tickets_path(@concert), method: :post  %><br>
+		<%= link_to "Edit", edit_concert_path(@concert) %><br>
+		<%= link_to "Delete Concert", concert_path(@concert), method: "delete", data: {confirm: "Are you sure?"} %>
+	</p>
+</div>
+
+<hr>
+
+<% @comments.each do |comment| %>
+	<strong><%= comment.name %> wrote:</strong>
+	<p><%= comment.comment %></p>
+<% end %>
+
+<h2>Add 
+<% if @comments.empty? %>
+	THE FIRST
+<% else %>
+	your
+<% end %>
+comment</h2>
+<%= form_for [@concert, @comment] do |f| %>
+	<div>
+	  <%= f.label :name %>
+	  <%= f.text_field :name %>
+  </div>
+
+  <div>
+  	<%= f.label :comment %>
+  	<%= f.text_area :comment %>
+  </div>
+
+  <div>
+  	<%= f.submit  %>
+  </div>
+<% end -%>

@@ -20,11 +20,13 @@ class ConcertsController < ApplicationController
 
 	def show
 		@concert = Concert.find_by id: params[:id]
-		p @concert
 		if @concert.nil?
 			flash[:alert] = "No concert found with that id"
 			redirect_to concerts_path
 		end
+		@comments = @concert.comments.order(created_at: :asc)
+		@comment = Comment.new
+		render :template => "shared/show"
 	end
 
 	def edit

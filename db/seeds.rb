@@ -16,7 +16,7 @@ def generate_short
 end
 
 def rand_date
-	(1..500).to_a.sample.days.from_now
+	(1..300).to_a.sample.days.from_now
 end
 
 venues = ["The Fillmore Miami Beach",

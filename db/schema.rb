@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160422145539) do
+ActiveRecord::Schema.define(version: 20160422230354) do
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "name"
+    t.text     "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "concert_id"
+  end
+
+  add_index "comments", ["concert_id"], name: "index_comments_on_concert_id"
 
   create_table "concerts", force: :cascade do |t|
     t.string   "artist"
@@ -22,6 +32,7 @@ ActiveRecord::Schema.define(version: 20160422145539) do
     t.text     "description"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "tickets"
   end
 
 end

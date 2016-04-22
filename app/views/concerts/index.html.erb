@@ -15,7 +15,7 @@
 	<ul>
 	<% @this_year.each do |concert| %>
 		<li>
-		<%= link_to concert.artist << " on " << concert.date.strftime("%b %-d"), concert_path(concert) %>
+		<%= link_to concert.artist.truncate(20) << " on " << concert.date.strftime("%b %-d"), concert_path(concert) %>
 		</li>
 	<% end %>
 	</ul>

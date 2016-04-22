@@ -1,4 +1,5 @@
 class Concert < ActiveRecord::Base
+	has_many :comments
 	validates_presence_of :artist, :venue, :city, :price, :date, :description
 	validates_numericality_of :price, greater_than: 0
 	validate :future_date
