@@ -6,6 +6,7 @@
 	<p>
 		<strong>Price: <%= number_to_currency(@concert.price) %></strong>
 		<%= link_to "Purchase Ticket", concerts_path %><br>
-		<%= link_to "Edit", edit_concert_path(@concert) %>
+		<%= link_to "Edit", edit_concert_path(@concert) %><br>
+		<%= link_to "Delete Concert", concert_path(@concert), method: "delete", data: {confirm: "Are you sure?"} %>
 	</p>
 </div>

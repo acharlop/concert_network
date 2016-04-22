@@ -41,6 +41,11 @@ class ConcertsController < ApplicationController
 		end
 	end
 
+	def destroy
+		Concert.destroy params[:id]
+		redirect_to concerts_path
+	end
+
 	private
 
 	def concert_params
