@@ -17,8 +17,7 @@ class Concert < ActiveRecord::Base
 	private
 
 	def self.date_range(*date)
-		e = date[0] ? date[0] : Time.now
-		end_d = (e + 1.day).midnight
+		end_d = (date[0] ? date[0] : Time.now).end_of_day
 		start = (date[1] ? date[1] : Time.now).midnight
 		return start..end_d
 	end
